@@ -48,7 +48,7 @@
                 
             </div>
             <div class="d-flex justify-content-end pt-3">
-            <button class="btn btn-success">Finish</button>
+            <button class="btn btn-success" type="submit">Finish</button>
             </div>
         </b-modal>
     </div>
