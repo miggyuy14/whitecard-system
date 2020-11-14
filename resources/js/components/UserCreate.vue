@@ -5,7 +5,7 @@
         
         <div class="card card-body mb-2 d-flex justify-content-center">
 
-            <button class="btn btn-success">Create new entry</button>
+          <b-button v-b-modal.my-modal class="btn btn-success">Add Entry</b-button>
 
             <table class="table table-bordered table-hover">
             <thead class="thead-dark">
@@ -34,11 +34,39 @@
                 
            </div>
         </div>
+        <b-modal id="my-modal">
+            <div class="card card-body">
+                <H2>New Whitecard</H2>
+                <label for="first_name">First Name</label>
+                <input type="text">
+                <label for="first_name">Last Name</label>
+                <input type="text">
+                <label for="first_name">Middle Initial</label>
+                <input type="text">
+                <label for="first_name">Subject Code</label>
+                <input type="text">
+                
+            </div>
+            <div class="d-flex justify-content-end pt-3">
+            <button class="btn btn-success">Finish</button>
+            </div>
+        </b-modal>
     </div>
 </template>
 
 <script>
+import { BButton, BModal, VBModal } from "bootstrap-vue";
 export default {
+
+    components: {
+            BButton,
+            BModal
+        },
+
+    directives: { 
+        'b-modal': VBModal 
+    },
+
     data(){
         return {
             whitecards:[],
