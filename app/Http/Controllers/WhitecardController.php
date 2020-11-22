@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Whitecard;
+
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Resources\Whitecard as WhitecardResource;
+use Illuminate\Support\Facades\Auth;
 
 class WhitecardController extends Controller
 {
@@ -16,18 +19,11 @@ class WhitecardController extends Controller
     public function index()
     {
         $whitecards = Whitecard::orderBy('created_at', 'desc')->paginate(10);
+        
         return WhitecardResource::collection($whitecards);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+    
 
     /**
      * Store a newly created resource in storage.
@@ -36,8 +32,27 @@ class WhitecardController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //
+    {   
+        $user = Auth::user();
+        // $profId = Auth::user()->id;
+
+        $whitecards = $request->isMethod('put') ? Whitecard::findOrFail($request->whitecard_id) : new Whitecard;
+
+        $whitecards->id = $request->input('whitecard_id');
+        $whitecards->first_name = $request->input('first_name');
+        $whitecards->last_name = $request->input('last_name');
+        $whitecards->middle_initial = $request->input('middle_initial');
+        $whitecards->subject_name = $request->input('subject_name');
+        $whitecards->semester = $request->input('semester');
+        $whitecards->college_branch = $request->input('college_branch');
+        $whitecards->status = "Pending";
+        $whitecards->professors_name = $request->input('professor_name');
+        $whitecards->user_id = '1';
+        if ($whitecards->save()) {
+            return new WhitecardResource($whitecards);
+        }
+        return null;
+        // dd($whitecards);
     }
 
     /**

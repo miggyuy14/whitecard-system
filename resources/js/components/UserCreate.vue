@@ -5,7 +5,7 @@
         
         <div class="card card-body mb-2 d-flex justify-content-center">
 
-          <b-button v-b-modal.my-modal class="btn btn-success">Add Entry</b-button>
+          <b-button v-b-modal.my-modal class="btn btn-success" v-on:click="fetchProfessors()">Add Entry</b-button>
 
             <table class="table table-bordered table-hover">
             <thead class="thead-dark">
@@ -35,21 +35,36 @@
            </div>
         </div>
         <b-modal id="my-modal">
+            <form @submit.prevent="AddWhiteCard" >
             <div class="card card-body">
                 <H2>New Whitecard</H2>
-                <label for="first_name">First Name</label>
-                <input type="text">
-                <label for="first_name">Last Name</label>
-                <input type="text">
-                <label for="first_name">Middle Initial</label>
-                <input type="text">
-                <label for="first_name">Subject Code</label>
-                <input type="text">
                 
+                    <label for="first_name">First Name</label>
+                    <input type="text" v-model="whitecard.first_name" placeholder="first name">
+                    <label for="last_name">Last Name</label>
+                    <input type="text" v-model="whitecard.last_name" placeholder="last name">
+                    <label for="middle_initial">Middle Initial</label>
+                    <input type="text" v-model="whitecard.middle_initial" placeholder="middle initial">
+                    <label for="subject_name">Subject Code</label>
+                    <input type="text" v-model="whitecard.subject_name" placeholder="subject code">
+                    <label for="middle_initial">Semester</label>
+                    <input type="text" v-model="whitecard.semester" placeholder="semester">
+                    <label for="middle_initial">College Branch</label>
+                    <input type="text" v-model="whitecard.college_branch" placeholder="college branch">
+                    <label for="assigned_to">Assigned to</label>
+                    <select name="assigned_to" v-model="whitecard.professor_name">
+                        <!-- <option v-for="professor in professors" :key="professor.id" :value="professor.first_name">{{ professor.first_name }}</option> -->
+                        <option value="May Balita">May Balita</option>
+                        <option value="Orlando Bernaldez">Orlando Bernaldez</option>
+                        <option value="Melchor Erisa">Melchor Erise</option>
+                    </select>
+                
+
             </div>
             <div class="d-flex justify-content-end pt-3">
             <button class="btn btn-success" type="submit">Finish</button>
             </div>
+            </form>
         </b-modal>
     </div>
 </template>
@@ -75,28 +90,65 @@ export default {
                 subject: '',
                 first_name: '',
                 last_name: '',
+                middle_initial: '',
                 status: '',
                 created_at: '',
                 professors_name: '',
-
-
+            professors:[],
+            professor:{
+                first_name: '',
+                id:''
             }
+            },
+            whitecard_id:'',
                
         }
     },
     created() {
             this.fetchWhiteCard();
+            this.fetchProfessors();
         },
 
     methods: {
         fetchWhiteCard(){
-            fetch('api/user')
+            fetch('api/whitecard')
                 .then(res => res.json())
                 .then(res => {
                     console.log(res.data);
                     this.whitecards = res.data;
                 })
+        },
+        fetchProfessors(){
+        fetch('api/professors')
+        .then(res => res.json())
+        .then(res => {
+            console.log(res.data);
+            this.professors = res.data;
+        })
+    },
+        AddWhiteCard(){
+             fetch('api/addWhitecard', {
+                        method: 'post',
+                        body: JSON.stringify(this.whitecard),
+                        headers: {
+                            'content-type': 'application/json'
+                        }
+                    })
+                    .then(res => res.json())
+                    .then(data => {
+                        this.whitecard.first_name = '';
+                        this.whitecard.last_name = '';
+                        this.whitecard.middle_initial = '';
+                        this.whitecard.subject_name = '';
+                        this.whitecard.semseter = '';
+                        this.whitecard.college_branch = '';
+                        
+                        alert('Whitecard Added');
+                        this.fetchWhiteCard()
+                    })
+                    .catch(err => console.log(err));
         }
     },
+    
 }
 </script>

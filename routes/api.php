@@ -18,4 +18,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('user', 'WhiteCardController@index');
+Route::get('whitecard', 'WhiteCardController@index');
+
+Route::post('addWhitecard', 'WhiteCardController@store');
+
+Route::get('professors', 'ProfessorController@index');
+
