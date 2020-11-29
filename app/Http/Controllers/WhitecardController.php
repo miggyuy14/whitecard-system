@@ -24,7 +24,8 @@ class WhitecardController extends Controller
 
     public function index()
     {
-        $whitecards = Whitecard::orderBy('created_at', 'desc')->paginate(10);
+        $user = Auth::id();
+        $whitecards = Whitecard::orderBy('created_at', 'desc')->where('user_id', $user)->paginate(10);
         // $user = Auth::user();
         // return WhitecardResource::collection($whitecards);
         return view('user.index', compact('whitecards'));
@@ -58,11 +59,10 @@ class WhitecardController extends Controller
         $whitecards->status = "Pending";
         // $whitecards->professors_name = $profName;
         $whitecards->user_id = Auth::user()->id;
-        if ($whitecards->save()) {
-            return new WhitecardResource($whitecards);
-        }
+        $whitecards->save();
+            
         
-        return null;
+       
         // dd($whitecards);
     }
 

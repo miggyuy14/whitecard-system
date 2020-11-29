@@ -24,21 +24,22 @@
             {{-- <th>Assigned To</th> --}}
             <th>Actions</th>
         </thead>
+        @foreach ($whitecards as $whitecard)
         <tbody>
-            @foreach ($whitecards as $whitecard)
+            
             <td>{{ $whitecard->id }}</td>
             <td>{{ $whitecard->subject_name }}</td>
             <td>{{ $whitecard->first_name }} {{ $whitecard->middle_initial }} {{ $whitecard->last_name }}</td>
             <td>{{ $whitecard->status }}</td>
             <td>{{ $whitecard->created_at }}</td>
             <td>
-                <button class="btn btn-secondary">Edit</button>
-                <button class="btn btn-danger">Delete</button>
+                <button class="btn btn-primary" >Edit</button>
+                <a href="delete/{{ $whitecard->id }}"><button class="btn btn-danger" >Delete</button></a>
             </td>
-            @endforeach
+            
            
         </tbody>
-
+        @endforeach
         </table>
             
        </div>
