@@ -14,7 +14,7 @@ class ProfessorController extends Controller
      */
     public function index()
     {
-        $professors = User::get();
+        $professors = User::all();
         return $professors;   
     }
 

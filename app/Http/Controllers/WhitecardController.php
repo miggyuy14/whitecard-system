@@ -11,16 +11,23 @@ use Illuminate\Support\Facades\Auth;
 
 class WhitecardController extends Controller
 {
+
+    // protected $user = Auth::user();
+    // public $profName = $user->first_name;
+    // public $profId = $user->id;
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+    
+
     public function index()
     {
         $whitecards = Whitecard::orderBy('created_at', 'desc')->paginate(10);
-        
-        return WhitecardResource::collection($whitecards);
+        // $user = Auth::user();
+        // return WhitecardResource::collection($whitecards);
+        return view('user.index', compact('whitecards'));
     }
 
     
@@ -33,11 +40,14 @@ class WhitecardController extends Controller
      */
     public function store(Request $request)
     {   
-        $user = Auth::user();
+        
         // $profId = Auth::user()->id;
-
-        $whitecards = $request->isMethod('put') ? Whitecard::findOrFail($request->whitecard_id) : new Whitecard;
-
+        // $user = Auth::user()->name;
+        // $name = $user->first_name;
+        // $profName = $user['first_name'];
+        // $profId = $user['id'];
+        $whitecards = new Whitecard;
+        
         $whitecards->id = $request->input('whitecard_id');
         $whitecards->first_name = $request->input('first_name');
         $whitecards->last_name = $request->input('last_name');
@@ -46,11 +56,12 @@ class WhitecardController extends Controller
         $whitecards->semester = $request->input('semester');
         $whitecards->college_branch = $request->input('college_branch');
         $whitecards->status = "Pending";
-        $whitecards->professors_name = $request->input('professor_name');
-        $whitecards->user_id = '1';
+        // $whitecards->professors_name = $profName;
+        $whitecards->user_id = Auth::user()->id;
         if ($whitecards->save()) {
             return new WhitecardResource($whitecards);
         }
+        
         return null;
         // dd($whitecards);
     }
@@ -98,5 +109,11 @@ class WhitecardController extends Controller
     public function destroy(Whitecard $whitecard)
     {
         //
+    }
+
+    public function test()
+    {
+        $user = Auth::user();
+        return $user->name;
     }
 }

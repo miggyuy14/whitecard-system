@@ -5,7 +5,7 @@
         
         <div class="card card-body mb-2 d-flex justify-content-center">
 
-          <b-button v-b-modal.my-modal class="btn btn-success" v-on:click="fetchProfessors()">Add Entry</b-button>
+          <b-button v-b-modal.my-modal class="btn btn-success" >Add Entry</b-button>
 
             <table class="table table-bordered table-hover">
             <thead class="thead-dark">
@@ -23,7 +23,6 @@
                 <td>{{ whitecard.first_name }} {{ whitecard.middle_initial }} {{ whitecard.last_name }}</td>
                 <td>{{ whitecard.status }}</td>
                 <td>{{ whitecard.created_at }}</td>
-                <td>{{ whitecard.professors_name }}</td>
                 <td>
                     <button class="btn btn-secondary">Edit</button>
                     <button class="btn btn-danger">Delete</button>
@@ -51,13 +50,6 @@
                     <input type="text" v-model="whitecard.semester" placeholder="semester">
                     <label for="middle_initial">College Branch</label>
                     <input type="text" v-model="whitecard.college_branch" placeholder="college branch">
-                    <label for="assigned_to">Assigned to</label>
-                    <select name="assigned_to" v-model="whitecard.professor_name">
-                        <!-- <option v-for="professor in professors" :key="professor.id" :value="professor.first_name">{{ professor.first_name }}</option> -->
-                        <option value="May Balita">May Balita</option>
-                        <option value="Orlando Bernaldez">Orlando Bernaldez</option>
-                        <option value="Melchor Erisa">Melchor Erise</option>
-                    </select>
                 
 
             </div>

@@ -25,10 +25,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 // Route::get('/user','WhiteCardController@index');
 // Route::group(['middleware' => ['web']], function () {
-    Route::get('/whitecard', function () {
-        return view('user.index');
-    });
-    // Route::get('whitecard', 'WhiteCardController@index');
+    Route::get('/whitecard', 'WhiteCardController@index');
+    Route::post('/whitecard', 'WhiteCardController@store');
+    Route::get('test', 'WhiteCardController@test');
 
     // Route::post('addWhitecard', 'WhiteCardController@store');
 // });

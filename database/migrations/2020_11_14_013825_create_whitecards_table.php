@@ -23,7 +23,7 @@ class CreateWhitecardsTable extends Migration
             $table->integer('semester');
             $table->string('subject_name');
             $table->string('status');
-            $table->string('professors_name');
+            // $table->string('professors_name');
             $table->timestamps();
 
             $table->foreign('user_id')
