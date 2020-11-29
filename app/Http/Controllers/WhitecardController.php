@@ -20,18 +20,28 @@ class WhitecardController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    
+
 
     public function index()
     {
         $user = Auth::id();
-        $whitecards = Whitecard::orderBy('created_at', 'desc')->where('user_id', $user)->paginate(10);
-        // $user = Auth::user();
-        // return WhitecardResource::collection($whitecards);
-        return view('user.index', compact('whitecards'));
+        $role = Auth::user()->role;
+        if($role == 'admin'){
+            // $whitecards = Whitecard::orderBy('created_at', 'desc')->paginate(10);
+            // return view('user.index', compact('whitecards'));
+            return redirect('/admin');
+        }
+        else if($role == 'student'){
+            return redirect('/student');
+        }
+        else
+        {
+            $whitecards = Whitecard::orderBy('created_at', 'desc')->where('user_id', $user)->paginate(10);
+            return view('user.index', compact('whitecards'));
+        }
     }
 
-    
+
 
     /**
      * Store a newly created resource in storage.
@@ -40,15 +50,15 @@ class WhitecardController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {   
-        
+    {
+
         // $profId = Auth::user()->id;
         // $user = Auth::user()->name;
         // $name = $user->first_name;
         // $profName = $user['first_name'];
         // $profId = $user['id'];
         $whitecards = new Whitecard;
-        
+
         $whitecards->id = $request->input('whitecard_id');
         $whitecards->first_name = $request->input('first_name');
         $whitecards->last_name = $request->input('last_name');
@@ -60,9 +70,9 @@ class WhitecardController extends Controller
         // $whitecards->professors_name = $profName;
         $whitecards->user_id = Auth::user()->id;
         $whitecards->save();
-            
-        
-       
+
+
+
         // dd($whitecards);
     }
 

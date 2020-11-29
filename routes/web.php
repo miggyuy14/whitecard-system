@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 
@@ -28,6 +28,10 @@ Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/whitecard', 'WhiteCardController@index');
     Route::post('/whitecard', 'WhiteCardController@store');
     Route::get('test', 'WhiteCardController@test');
+
+    Route::get('student', 'StudentController@index');
+
+    Route::get('admin', 'AdminController@index');
 
     // Route::post('addWhitecard', 'WhiteCardController@store');
 // });
