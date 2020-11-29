@@ -11,63 +11,63 @@
 
     <div class="col sm-9 pl-5">
     <div class="card card-body mb-2 d-flex justify-content-center">
-        <h1 class="d-flex justify-content-center pt-3 pb-2">List of Whitecards</h1>
+        <h1 class="d-flex justify-content-center pt-3 pb-2">First Semester</h1>
         {{-- <a href="/whitecardsave"><button class="btn btn-success"> Entry</button></a> --}}
 
         <table class="table table-bordered table-hover">
         <thead class="thead-dark">
             <th>ID</th>
-            <th>Subject</th>
-            <th>Name</th>
-            <th>Status</th>
-            <th>Date Created</th>
+            <th>IT101</th>
+            <th>IT102</th>
+            <th>IT103</th>
+            <th>Psych 01</th>
+            <th>Fil 01</th>
+            <th>PE 01</th>
+            <th>NSTP 01</th>
+            <th>Engl 01</th>
+            <th>Math 01</th>
+            <th>Engl A01</th>
+            <th>Math A01</th>
+            <th>IT104</th>
+            <th>IT105</th>
+            <th>IT106</th>
+            <th>Statcomp</th>
+            <th>Engl 02</th>
+            <th>Natsci</th>
+            <th>Mgt 01</th>
+            <th>PE 02</th>
+            <th>NSTP 02</th>
             {{-- <th>Assigned To</th> --}}
-            <th>Actions</th>
         </thead>
-        @foreach ($whitecards as $whitecard)
+        @foreach ($grades as $grade)
         <tbody>
-
-            <td>{{ $whitecard->id }}</td>
-            <td>{{ $whitecard->subject_name }}</td>
-            <td>{{ $whitecard->first_name }} {{ $whitecard->middle_initial }} {{ $whitecard->last_name }}</td>
-            <td>{{ $whitecard->status }}</td>
-            <td>{{ $whitecard->created_at }}</td>
-            <td>
-                <button class="btn btn-primary" >Edit</button>
-                <a href="delete/{{ $whitecard->id }}"><button class="btn btn-danger" >Delete</button></a>
-            </td>
-
-
+            <td>{{ $grade->id }}</td>
+            <td>{{ $grade->it101 }}</td>
+            <td>{{ $grade->it102 }}</td>
+            <td>{{ $grade->it103 }}</td>
+            <td>{{ $grade->psych01 }}</td>
+            <td>{{ $grade->fil01 }}</td>
+            <td>{{ $grade->pe01 }}</td>
+            <td>{{ $grade->nstp01 }}</td>
+            <td>{{ $grade->engl01 }}</td>
+            <td>{{ $grade->math01 }}</td>
+            <td>{{ $grade->engla01 }}</td>
+            <td>{{ $grade->matha01 }}</td>
+            <td>{{ $grade->it104 }}</td>
+            <td>{{ $grade->it105 }}</td>
+            <td>{{ $grade->it106 }}</td>
+            <td>{{ $grade->statcomp }}</td>
+            <td>{{ $grade->engl02 }}</td>
+            <td>{{ $grade->natsci }}</td>
+            <td>{{ $grade->mgt01 }}</td>
+            <td>{{ $grade->pe02 }}</td>
+            <td>{{ $grade->nstp02 }}</td>
         </tbody>
         @endforeach
         </table>
 
        </div>
     </div>
-
-    <div class="col-sm-3 pr-5">
-        <form action="/whitecard" method="POST">
-            @csrf
-        <div class="card card-body mb-2 d-flex justify-content-center">
-            <H2>New Whitecard</H2>
-
-                    <label for="first_name">First Name</label>
-                    <input type="text" name="first_name" placeholder="first name">
-                    <label for="last_name">Last Name</label>
-                    <input type="text" name="last_name" placeholder="last name">
-                    <label for="middle_initial">Middle Initial</label>
-                    <input type="text" name="middle_initial" placeholder="middle initial">
-                    <label for="subject_name">Subject Code</label>
-                    <input type="text" name="subject_name" placeholder="subject code">
-                    <label for="middle_initial">Semester</label>
-                    <input type="text" name="semester" placeholder="semester">
-                    <label for="middle_initial">College Branch</label>
-                    <input type="text" name="college_branch" placeholder="college branch">
-                    <button type="submit" class="btn btn-sm btn-success mt-3">Submit</button>
-
-        </div>
-    </div>
-</form>
     </div>
 
 

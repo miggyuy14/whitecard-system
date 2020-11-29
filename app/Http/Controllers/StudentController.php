@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Student;
+use App\Grades;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class StudentController extends Controller
 {
@@ -14,7 +16,9 @@ class StudentController extends Controller
      */
     public function index()
     {
-        //
+        $users = Auth::user()->id;
+        $grades = Grades::orderBy('created_at', 'desc')->where('id', $user->id)->paginate(10);
+        return view('user.index', compact('grades', 'users'));
     }
 
     /**

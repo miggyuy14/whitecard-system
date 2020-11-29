@@ -226,6 +226,9 @@ svg {
 
 table {
   border-collapse: collapse;
+  overflow-y:scroll;
+  height:100px;
+  display:block;
 }
 
 caption {
