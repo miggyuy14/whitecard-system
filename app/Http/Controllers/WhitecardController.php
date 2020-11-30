@@ -70,6 +70,7 @@ class WhitecardController extends Controller
         // $whitecards->professors_name = $profName;
         $whitecards->user_id = Auth::user()->id;
         $whitecards->save();
+        return back();
 
 
 

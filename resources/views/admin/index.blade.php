@@ -25,19 +25,22 @@
             {{-- <th>Assigned To</th> --}}
             <th>Actions</th>
         </thead>
-        @foreach ($whitecards as $whitecard)
+        @foreach ($whitecards as $admin)
         <tbody>
 
-            <td>{{ $whitecard->id }}</td>
-            <td>{{ $whitecard->subject_name }}</td>
-            <td>{{ $whitecard->first_name }} {{ $whitecard->middle_initial }} {{ $whitecard->last_name }}</td>
-            <td>{{ $whitecard->status }}</td>
-            <td>{{ $whitecard->created_at }}</td>
+            <td>{{ $admin->id }}</td>
+            <td>{{ $admin->subject_name }}</td>
+            <td>{{ $admin->first_name }} {{ $admin->middle_initial }} {{ $admin->last_name }}</td>
+            <td>{{ $admin->status }}</td>
+            <td>{{ $admin->created_at }}</td>
             <td>
-                <button class="btn btn-primary" >Edit</button>
-                <a href="delete/{{ $whitecard->id }}"><button class="btn btn-danger" >Delete</button></a>
+                {{-- <a class="btn btn-info" href="/admin/{{ $whitecard->id }}" >Edit</a> --}}
+                <form action="{{ route('admin.destroy',$admin->id) }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
             </td>
-
 
         </tbody>
         @endforeach

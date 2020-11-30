@@ -24,65 +24,41 @@
             {{-- <th>Assigned To</th> --}}
             <th>Actions</th>
         </thead>
-        @foreach ($faculties as $faculty)
+        @foreach ($users as $user)
         <tbody>
-
-            <td>{{ $faculty->id }}</td>
-                <td>{{ $faculty->name }}</td>
-                <td>{{ $faculty->email}}</td>
-                <td>{{ $faculty->created_at }}</td>
+                
+                <td>{{ $user->id }}</td>
+                <td>{{ $user->name }}</td>
+                <td>{{ $user->email}}</td>
+                <td>{{ $user->created_at }}</td>
             <td>
-                <button class="btn btn-primary" >Edit</button>
-                <a href="delete/{{ $faculty->id }}"><button class="btn btn-danger" >Delete</button></a>
+                <form action="{{ route('users.destroy',$user->id) }}" method="POST">
+   
+                    {{-- <a class="btn btn-info" href="{{ route('products.show',$product->id) }}">Show</a>
+    
+                    <a class="btn btn-primary" href="{{ route('products.edit',$product->id) }}">Edit</a> --}}
+   
+                    @csrf
+                    @method('DELETE')
+      
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
             </td>
 
             
         </tbody>
         @endforeach
-        {{ $faculties->links() }}
+        {{ $users->links() }}
         </table>
 
        </div>
     </div>
 
-    <div class="col sm-9 pl-5">
-        <div class="card card-body mb-2 d-flex justify-content-center">
-            <h1 class="d-flex justify-content-center pt-3 pb-2">List of Students</h1>
-            {{-- <a href="/whitecardsave"><button class="btn btn-success"> Entry</button></a> --}}
-    
-            <table class="table table-bordered table-hover">
-            <thead class="thead-dark">
-                <th>ID</th>
-                <th>Name</th>
-                <th>Status</th>
-                <th>Date Created</th>
-                {{-- <th>Assigned To</th> --}}
-                <th>Actions</th>
-            </thead>
-            @foreach ($students as $student)
-            <tbody>
-    
-                <td>{{ $student->id }}</td>
-                <td>{{ $student->name }}</td>
-                <td>{{ $student->email}}</td>
-                <td>{{ $student->created_at }}</td>
-                <td>
-                    <button class="btn btn-primary" >Edit</button>
-                    <a href="delete/{{ $faculty->id }}"><button class="btn btn-danger" >Delete</button></a>
-                </td>
-    
-    
-            </tbody>
-            @endforeach
-            {{ $faculties->links() }}
-            </table>
-    
-           </div>
-        </div>
+
 
 </div>
     <div class="col-sm-3 pr-5">
-        <form action="/admin" method="POST">
+        <form action="{{ route('users.store') }}" method="POST">
             @csrf
         <div class="card card-body mb-2 d-flex justify-content-center">
             <H2>New User</H2>
@@ -109,6 +85,7 @@
 
     </div>
 </div>
+
 
 
 @endsection

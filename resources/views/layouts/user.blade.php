@@ -78,7 +78,7 @@
       </div>
 
       <!-- SidebarSearch Form -->
-      {{-- <div class="form-inline">
+      <div class="form-inline">
         <div class="input-group" data-widget="sidebar-search">
           <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
           <div class="input-group-append">
@@ -87,7 +87,7 @@
             </button>
           </div>
         </div>
-      </div> --}}
+      </div>
 
       <!-- Sidebar Menu -->
       <nav class="mt-2">
@@ -116,12 +116,7 @@
                   <p>Whitecards</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="/admin/encode" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Encode Grades</p>
-                </a>
-              </li>
+              
             </ul>
           </li>
           

@@ -29,12 +29,14 @@ Route::get('/home', 'HomeController@index')->name('home');
     Route::post('/whitecard', 'WhiteCardController@store');
     Route::get('test', 'WhiteCardController@test');
 
-    Route::get('student', 'StudentController@index');
+    // Route::get('student', 'StudentController@index');
 
-    Route::get('admin', 'AdminController@index');
-    // Route::get('admin/whitecard', 'AdminController@whitecards');s
-    Route::get('admin/userlist', 'AdminController@userlist');
-    Route::post('admin', 'AdminController@createuser');
+    Route::resource('admin/users', 'AdminUserController');
+    Route::resource('admin/encode', 'AdminGradeController');
+    Route::resource('admin', 'AdminController');
+    
+    
+    // Route::get('admin/{$id}', 'AdminController@destroy');
 
     
 
