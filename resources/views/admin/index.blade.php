@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 @section('content')
 
 {{-- <div id="app">
@@ -6,7 +6,8 @@
 
     </create>
 </div> --}}
-
+<div class="content">
+    <div class="container-fluid">
 <div class="row">
 
     <div class="col sm-9 pl-5">
@@ -40,8 +41,9 @@
 
         </tbody>
         @endforeach
+        {{ $whitecards->links() }}
         </table>
-
+        
        </div>
     </div>
 
@@ -69,6 +71,9 @@
     </div>
 </form>
     </div>
+
+    </div>
+</div>
 
 
 @endsection

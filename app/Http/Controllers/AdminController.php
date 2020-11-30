@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use App\Whitecard;
 use App\Admin;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -16,10 +18,18 @@ class AdminController extends Controller
     public function index()
     {
 
-        $whitecards = Whitecard::orderBy('created_at', 'desc')->paginate(10);
+        $whitecards = Whitecard::orderBy('created_at', 'desc')->paginate(20);
         return view('admin.index', compact('whitecards'));
 
     }
+
+    public function userlist()
+    {
+        $faculties = User::orderBy('created_at', 'desc')->where('role', 'user')->paginate(10);
+        $students = User::orderBy('created_at', 'desc')->where('role', 'student')->paginate(10);
+        return view('admin.faculty', compact('faculties', 'students'));
+    }
+    
 
     /**
      * Show the form for creating a new resource.
@@ -40,6 +50,25 @@ class AdminController extends Controller
     public function store(Request $request)
     {
         //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function createuser(Request $request)
+    {
+        $user = New User;
+        $password = $request->input('password');
+        $hash = Hash::make($password);
+
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
+        $user->password = $hash;
+        $user->role = $request->input('role');
+        $user->save();
     }
 
     /**

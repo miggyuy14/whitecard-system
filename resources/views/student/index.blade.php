@@ -9,6 +9,7 @@
 
 
     {{-- <div class="container"> --}}
+    
     <div class="card card-group mb-5 mr-5 ml-5">
         
     <div class="col-sm-12 pl-5 pr-5 pt-5">
@@ -62,6 +63,7 @@
     
             <table class="table table-bordered table-hover">
             <thead class="thead-dark">
+                <th>ID</th>
                 <th>IT104</th>
                 <th>IT105</th>
                 <th>IT106</th>
@@ -75,6 +77,7 @@
             </thead>
             @foreach ($grades as $grade) 
             <tbody>
+                <td>{{ $grade->id }}</td>
                 <td>{{ $grade->it104 }}</td>
                 <td>{{ $grade->it105 }}</td>
                 <td>{{ $grade->it106 }}</td>

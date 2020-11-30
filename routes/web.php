@@ -32,6 +32,11 @@ Route::get('/home', 'HomeController@index')->name('home');
     Route::get('student', 'StudentController@index');
 
     Route::get('admin', 'AdminController@index');
+    // Route::get('admin/whitecard', 'AdminController@whitecards');s
+    Route::get('admin/userlist', 'AdminController@userlist');
+    Route::post('admin', 'AdminController@createuser');
+
+    
 
     // Route::post('addWhitecard', 'WhiteCardController@store');
 // });

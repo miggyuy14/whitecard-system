@@ -41,7 +41,7 @@
         </tbody>
         @endforeach
         </table>
-
+        {{ $whitecards->links() }}
        </div>
     </div>
 
