@@ -17,8 +17,8 @@ class StudentController extends Controller
     public function index()
     {
         $users = Auth::user()->id;
-        $grades = Grades::orderBy('created_at', 'desc')->where('id', $user->id)->paginate(10);
-        return view('user.index', compact('grades', 'users'));
+        $grades = Grades::orderBy('created_at', 'desc')->where('id', $users)->paginate(10);
+        return view('student.index', compact('grades', 'users'));
     }
 
     /**

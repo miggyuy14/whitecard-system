@@ -16,7 +16,7 @@ class CreateGradesTable extends Migration
         Schema::create('grades', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->id();
-            // $table->unsignedBigInteger('stud_id');
+            $table->unsignedBigInteger('stud_id');
             $table->string('it102')->nullable();
             $table->string('it101')->nullable();
             $table->string('it103')->nullable();
@@ -76,7 +76,7 @@ class CreateGradesTable extends Migration
             $table->string('it405')->nullable();
             $table->timestamps();
 
-            $table->foreign('id')
+            $table->foreign('stud_id')
                     ->references('id')
                     ->on('students')
                     ->onDelete('cascade');
