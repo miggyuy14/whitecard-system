@@ -2,12 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
-use App\Grades;
-use App\Student;
 use Illuminate\Http\Request;
 
-class AdminGradeController extends Controller
+class AdminAddGradesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +13,7 @@ class AdminGradeController extends Controller
      */
     public function index()
     {
-        $users = Student::orderBy('created_at', 'desc')->paginate(10);
-        return view('admin.student', compact('users'));
+        //
     }
 
     /**
@@ -25,7 +21,7 @@ class AdminGradeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create() 
+    public function create()
     {
         //
     }
@@ -38,29 +34,18 @@ class AdminGradeController extends Controller
      */
     public function store(Request $request)
     {
-        $user = New Student;
-
-        $user->student_id = $request->input('student_id');
-        $user->first_name = $request->input('first_name');
-        $user->last_name = $request->input('last_name');
-        $user->middle_initial = $request->input('middle_initial');
-        $user->course = $request->input('course');
-        $user->curriculum = $request->input('curriculum');
-        $user->save();
-        return redirect('/admin/encode');
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $user
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($user)
+    public function show($id)
     {
-        $grades = Grades::where('stud_id', $user)->get();
-
-        return view('admin.grade', compact('grades'));
+        //
     }
 
     /**
@@ -71,8 +56,7 @@ class AdminGradeController extends Controller
      */
     public function edit($id)
     {
-        $grades = Grades::where('stud_id', $id)->get();
-        return view('admin.firstyear', compact('grades'));
+        return view('admin.addgrades');
     }
 
     /**

@@ -42,7 +42,7 @@
             <td>
                 <form action="{{ route('encode.destroy',$user->id) }}" method="POST">
    
-                    <a class="btn btn-info" href="{{ route('encode.show',$user->id) }}">Show</a>
+                    <a class="btn btn-info" href="{{ route('addGrades.edit',$user->id) }}">Add Grades</a>
     
                     {{-- <a class="btn btn-primary" href="{{ route('encode.edit',$user->id) }}">Edit</a> --}}
    

@@ -34,6 +34,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
     Route::resource('admin/users', 'AdminUserController');
     Route::resource('admin/encode', 'AdminGradeController');
+    Route::resource('admin/addGrades', 'AdminaddGradesController');
     Route::resource('admin', 'AdminController');
     
     

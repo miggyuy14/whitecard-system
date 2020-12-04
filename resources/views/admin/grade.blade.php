@@ -12,9 +12,9 @@
     
     <div class="card card-group mb-5 mr-5 ml-5">
         
+        
     <div class="col-sm-12 pl-5 pr-5 pt-5">
         <h1 class="d-flex justify-content-center pb-2">First Year</h1>
-        <button class="btn btn-success justify-content-end" href="{{ route('encode.edit') }}">Add grades</button>
     <div class="card card-body mb-2 d-flex justify-content-center">
         <h2 class="d-flex justify-content-center pt-3 pb-2">First Semester</h2>
         {{-- <a href="/whitecardsave"><button class="btn btn-success"> Entry</button></a> --}}
@@ -52,7 +52,7 @@
             <td>{{ $grade->matha01 }}</td>
             <td>
                 
-                    <a class="btn btn-info" href="{{ route('encode.edit',$user->id) }}">Edit</a>
+                    <a class="btn btn-info" href="{{ route('encode.edit',$grade->id) }}">Edit</a>
     
             </td>
         </tbody>
