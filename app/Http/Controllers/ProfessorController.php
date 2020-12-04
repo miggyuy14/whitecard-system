@@ -79,8 +79,10 @@ class ProfessorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Whitecard $user)
     {
-        //
+        $user->delete();
+        return redirect()->route('admin.index')
+                            ->with('success', 'whitecard deleted');
     }
 }

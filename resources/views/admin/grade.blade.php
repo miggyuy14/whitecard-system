@@ -14,10 +14,11 @@
         
     <div class="col-sm-12 pl-5 pr-5 pt-5">
         <h1 class="d-flex justify-content-center pb-2">First Year</h1>
+        <button class="btn btn-success justify-content-end" href="{{ route('encode.edit') }}">Add grades</button>
     <div class="card card-body mb-2 d-flex justify-content-center">
         <h2 class="d-flex justify-content-center pt-3 pb-2">First Semester</h2>
         {{-- <a href="/whitecardsave"><button class="btn btn-success"> Entry</button></a> --}}
-
+        
         <table class="table table-bordered table-hover">
         <thead class="thead-dark">
             <th>ID</th>
@@ -32,6 +33,7 @@
             <th>Math 01</th>
             <th>Engl A01</th>
             <th>Math A01</th>
+            <th>Actions</th>
             {{-- <th>Assigned To</th> --}}
         </thead>
         @foreach ($grades as $grade) 
@@ -48,7 +50,11 @@
             <td>{{ $grade->math01 }}</td>
             <td>{{ $grade->engla01 }}</td>
             <td>{{ $grade->matha01 }}</td>
-            
+            <td>
+                
+                    <a class="btn btn-info" href="{{ route('encode.edit',$user->id) }}">Edit</a>
+    
+            </td>
         </tbody>
         @endforeach
         </table>
@@ -73,6 +79,7 @@
                 <th>Mgt 01</th>
                 <th>PE 02</th>
                 <th>NSTP 02</th>
+                <th>Actions</th>
                 {{-- <th>Assigned To</th> --}}
             </thead>
             @foreach ($grades as $grade) 
@@ -87,6 +94,11 @@
                 <td>{{ $grade->mgt01 }}</td>
                 <td>{{ $grade->pe02 }}</td>
                 <td>{{ $grade->nstp02 }}</td>
+                <td>
+                
+                    <a class="btn btn-info" href="{{ route('encode.edit',$user->id) }}">Edit</a>
+    
+            </td>
             </tbody>
             @endforeach
             </table>
@@ -115,6 +127,7 @@
                 <th>Physics 01</th>
                 <th>Socsci</th>
                 <th>PE 03</th>
+                <th>Actions</th>
                 {{-- <th>Assigned To</th> --}}
             </thead>
             @foreach ($grades as $grade) 
@@ -127,6 +140,11 @@
                 <td>{{ $grade->fil01 }}</td>
                 <td>{{ $grade->physics01 }}</td>
                 <td>{{ $grade->pe03 }}</td>
+                <td>
+                
+                    <a class="btn btn-info" href="{{ route('encode.edit',$user->id) }}">Edit</a>
+    
+            </td>
             </tbody>
             @endforeach
             </table>
@@ -149,6 +167,7 @@
                     <th>Econ 101</th>
                     <th>PGC</th>
                     <th>PE 04</th>
+                    <th>Actions</th>
                     {{-- <th>Assigned To</th> --}}
                 </thead>
                 @foreach ($grades as $grade) 
@@ -162,6 +181,11 @@
                     <td>{{ $grade->econ101 }}</td>
                     <td>{{ $grade->pgc }}</td>
                     <td>{{ $grade->pe04 }}</td>
+                    <td>
+                
+                        <a class="btn btn-info" href="{{ route('encode.edit',$user->id) }}">Edit</a>
+        
+                </td>
                 </tbody>
                 @endforeach
                 </table>
@@ -190,6 +214,7 @@
                     <th>IT306</th>
                     <th>Law 01</th>
                     <th>Engl 04</th>
+                    <th>Actions</th>
                     {{-- <th>Assigned To</th> --}}
                 </thead>
                 @foreach ($grades as $grade) 
@@ -204,6 +229,11 @@
                     <td>{{ $grade->nstp01 }}</td>
                     <td>{{ $grade->law01 }}</td>
                     <td>{{ $grade->engl04 }}</td>
+                    <td>
+                
+                        <a class="btn btn-info" href="{{ route('encode.edit',$user->id) }}">Edit</a>
+        
+                </td>
                 </tbody>
                 @endforeach
                 </table>
@@ -224,6 +254,7 @@
                         <th>IT310</th>
                         <th>IT311</th>
                         <th>Worldlit</th>
+                        <th>Actions</th>
                         {{-- <th>Assigned To</th> --}}
                     </thead>
                     @foreach ($grades as $grade) 
@@ -235,6 +266,11 @@
                         <td>{{ $grade->it310 }}</td>
                         <td>{{ $grade->it311 }}</td>
                         <td>{{ $grade->worldlit }}</td>
+                        <td>
+                
+                            <a class="btn btn-info" href="{{ route('encode.edit',$user->id) }}">Edit</a>
+            
+                    </td>
                     </tbody>
                     @endforeach
                     </table>
@@ -260,6 +296,7 @@
                         <th>IT403</th>
                         <th>IT404</th>
                         <th>Philo 01</th>
+                        <th>Actions</th>
                         {{-- <th>Assigned To</th> --}}
                     </thead>
                     @foreach ($grades as $grade) 
@@ -270,6 +307,11 @@
                         <td>{{ $grade->it403 }}</td>
                         <td>{{ $grade->it404 }}</td>
                         <td>{{ $grade->philo01 }}</td>
+                        <td>
+                
+                            <a class="btn btn-info" href="{{ route('encode.edit',$user->id) }}">Edit</a>
+            
+                    </td>
                     </tbody>
                     @endforeach
                     </table>
@@ -286,6 +328,7 @@
                             <th>ID</th>
                             <th>FL</th>
                             <th>IT405</th>
+                            <th>Actions</th>
                             {{-- <th>Assigned To</th> --}}
                         </thead>
                         @foreach ($grades as $grade) 
@@ -293,6 +336,11 @@
                             <td>{{ $grade->id }}</td>
                             <td>{{ $grade->fl }}</td>
                             <td>{{ $grade->it405 }}</td>
+                            <td>
+                
+                                <a class="btn btn-info" href="{{ route('encode.edit',$user->id) }}">Edit</a>
+                
+                        </td>
                         </tbody>
                         @endforeach
                         </table>

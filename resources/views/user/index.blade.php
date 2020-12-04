@@ -33,8 +33,17 @@
             <td>{{ $whitecard->status }}</td>
             <td>{{ $whitecard->created_at }}</td>
             <td>
-                <button class="btn btn-primary" >Edit</button>
-                <a href="delete/{{ $whitecard->id }}"><button class="btn btn-danger" >Delete</button></a>
+                <form action="{{ route('whitecard.destroy',$whitecard->id) }}" method="POST">
+   
+                    {{-- <a class="btn btn-info" href="{{ route('products.show',$product->id) }}">Show</a> --}}
+    
+                    <a class="btn btn-primary" href="{{ route('whitecard.edit',$whitecard->id) }}">Confirm</a>
+
+                    @csrf
+                    @method('DELETE')
+      
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
             </td>
 
 

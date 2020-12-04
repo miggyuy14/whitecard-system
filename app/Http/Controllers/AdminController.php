@@ -105,7 +105,7 @@ class AdminController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy(Whitecard $admin)
-    {
+    { 
         $admin->delete();
         return redirect()->route('admin.index')
                             ->with('success', 'whitecard deleted');

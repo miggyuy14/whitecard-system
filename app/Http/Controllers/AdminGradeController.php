@@ -25,7 +25,7 @@ class AdminGradeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create() 
     {
         //
     }
@@ -71,7 +71,7 @@ class AdminGradeController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('admin.firstyear');
     }
 
     /**

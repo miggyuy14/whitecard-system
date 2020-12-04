@@ -78,7 +78,7 @@ class CreateGradesTable extends Migration
 
             $table->foreign('stud_id')
                     ->references('id')
-                    ->on('student')
+                    ->on('students')
                     ->onDelete('cascade');
         });
     }

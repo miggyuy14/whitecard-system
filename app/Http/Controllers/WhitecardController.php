@@ -8,6 +8,7 @@ use App\User;
 use Illuminate\Http\Request;
 use App\Http\Resources\Whitecard as WhitecardResource;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class WhitecardController extends Controller
 {
@@ -85,7 +86,7 @@ class WhitecardController extends Controller
      */
     public function show(Whitecard $whitecard)
     {
-        //
+       
     }
 
     /**
@@ -95,8 +96,16 @@ class WhitecardController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(Whitecard $whitecard)
-    {
-        //
+    {  
+        // $confirm = 'Confirmed';
+        // DB::update('update whitecards set status = ? where id = ?', [$confirm,$whitecard]);
+        // return redirect()->route('whitecard.index')
+        //                     ->with('success', 'whitecard confirmed');
+
+        // Whitecard::where('id', $whitecard)->update(array('status' => 'Confirmed'));
+        $whitecard->update(array('status' => 'Confirmed'));
+        return redirect()->route('whitecard.index')
+                            ->with('success', 'whitecard confirmed');
     }
 
     /**
@@ -119,7 +128,9 @@ class WhitecardController extends Controller
      */
     public function destroy(Whitecard $whitecard)
     {
-        //
+        $whitecard->delete();
+        return redirect()->route('whitecard.index')
+                            ->with('success', 'whitecard deleted');
     }
 
     public function test()
