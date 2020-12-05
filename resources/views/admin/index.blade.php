@@ -36,6 +36,7 @@
             <td>
                 {{-- <a class="btn btn-info" href="/admin/{{ $whitecard->id }}" >Edit</a> --}}
                 <form action="{{ route('admin.destroy',$admin->id) }}" method="POST">
+                    <a class="btn btn-primary" href="{{ route('whitecard.edit',$admin->id) }}">Confirm</a>
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-danger">Delete</button>
