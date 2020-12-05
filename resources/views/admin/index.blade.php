@@ -51,7 +51,7 @@
     </div>
 
     <div class="col-sm-3 pr-5">
-        <form action="/whitecard" method="POST">
+        <form action="{{ route('whitecard.store') }}" method="POST">
             @csrf
         <div class="card card-body mb-2 d-flex justify-content-center">
             <H2>New Whitecard</H2>

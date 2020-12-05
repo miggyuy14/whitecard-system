@@ -76,7 +76,7 @@ class CreateGradesTable extends Migration
             $table->string('it405')->nullable();
             $table->timestamps();
 
-            $table->foreign('stud_id')
+            $table->foreign('id')
                     ->references('id')
                     ->on('students')
                     ->onDelete('cascade');
